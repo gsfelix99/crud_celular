@@ -36,3 +36,19 @@ class Celular(db.Model):
             "velocidade_processamento": self.velocidade_processamento,
             "memoria_ram": self.memoria_ram
         }
+
+
+# Visualizar todos os celulares
+@app.route("/modelos", methods=["GET"])
+def seleciona_todos_celulares():
+    celular_objetos = Celular.query.all()
+    celular_json = [modelo.to_json() for modelo in celular_objetos]
+
+    return response_reporte(200, "modelos", celular_json)
+
+
+def response_reporte(status, nome_do_conteudo, conteudo, mensagem="False"):
+    body = {nome_do_conteudo: conteudo}
+    if mensagem:
+        body["mensagem"] = mensagem
+    return Response(json.dumps(body), status=status, mimetype="application/json")
