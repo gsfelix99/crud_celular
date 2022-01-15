@@ -47,6 +47,20 @@ def seleciona_todos_celulares():
     return response_reporte(200, "modelos", celular_json)
 
 
+# Visualizar celular por id
+@app.route("/modelo/<id>", methods=["GET"])
+def seleciona_modelo_id(id):
+    celular_objeto = busca_por_id(id)
+    celular_json = celular_objeto.to_json()
+
+    return response_reporte(200, "celular_por_id", celular_json)
+
+
+def busca_por_id(id):
+    return Celular.query.filter_by(id=id).first_or_404(
+        description='Não houve ocorrências do id: {}'.format(id))
+
+
 def response_reporte(status, nome_do_conteudo, conteudo, mensagem="False"):
     body = {nome_do_conteudo: conteudo}
     if mensagem:
