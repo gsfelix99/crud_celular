@@ -127,3 +127,6 @@ def response_reporte(status, nome_do_conteudo, conteudo, mensagem="False"):
     if mensagem:
         body["mensagem"] = mensagem
     return Response(json.dumps(body), status=status, mimetype="application/json")
+
+
+app.run()
