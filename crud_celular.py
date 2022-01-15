@@ -75,34 +75,6 @@ def inserir_celular():
         return response_reporte(400, "", {})
 
 
-# Atualizar
-@app.route("/modelo/<id>", methods=["PUT"])
-def atualiza_celular(id):
-    celular_objeto = busca_por_id(id)
-    body = request.get_json()
-
-    try:
-        if 'marca' in body:
-            celular_objeto.marca = body["marca"]
-        if 'modelo' in body:
-            celular_objeto.modelo = body["modelo"]
-        if 'nome' in body:
-            celular_objeto.nome = body["nome"]
-        if 'capacidade' in body:
-            celular_objeto.capacidade = body["capacidade"]
-        if 'memoria_ram' in body:
-            celular_objeto.memoria_ram = body["memoria_ram"]
-        if 'velocidade_processamento' in body:
-            celular_objeto.velocidade_processamento = body["velocidade_processamento"]
-
-        db.session.add(celular_objeto)
-        db.session.commit()
-        return response_reporte(200, "celular", celular_objeto.to_json(), "Atualizado com sucesso")
-    except Exception as e:
-        print('Error: ', e)
-        return response_reporte(400, "", {}, "Erro ao atualizar")
-
-
 def busca_por_id(id):
     return Celular.query.filter_by(id=id).first_or_404(
         description='Não houve ocorrências do id: {}'.format(id))
