@@ -49,7 +49,7 @@ def seleciona_todos_celulares():
 
 # Visualizar celular por id
 @app.route("/modelo/<id>", methods=["GET"])
-def sleciona_modelo_id(id):
+def seleciona_modelo_id(id):
     celular_objeto = busca_por_id(id)
     celular_json = celular_objeto.to_json()
 
