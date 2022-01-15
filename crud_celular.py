@@ -102,6 +102,21 @@ def atualiza_celular(id):
         print('Error: ', e)
         return response_reporte(400, "", {}, "Erro ao atualizar")
 
+
+# Deletar celular por Id
+@app.route("/modelo/<id>", methods=["DELETE"])
+def deleta_celular(id):
+    celular_objeto = busca_por_id(id)
+
+    try:
+        db.session.delete(celular_objeto)
+        db.session.commit()
+        return response_reporte(200, "celular", celular_objeto.to_json(), "Deletado com sucesso")
+    except Exception as e:
+        print('Error: ', e)
+        return response_reporte(400, "celular", {}, "Erro ao deletar")
+
+
 def busca_por_id(id):
     return Celular.query.filter_by(id=id).first_or_404(
         description='Não houve ocorrências do id: {}'.format(id))
