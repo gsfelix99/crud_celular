@@ -56,6 +56,25 @@ def seleciona_modelo_id(id):
     return response_reporte(200, "celular_por_id", celular_json)
 
 
+# Inserir um novo celular
+@app.route("/modelo", methods=["POST"])
+def inserir_celular():
+    body = request.get_json()
+    try:
+        celular = Celular(marca=body["marca"],
+                          modelo=body["modelo"],
+                          nome=body["nome"],
+                          capacidade=body["capacidade"],
+                          velocidade_processamento=body["velocidade_processamento"],
+                          memoria_ram=body["memoria_ram"])
+        db.session.add(celular)
+        db.session.commit()
+        return response_reporte(201, "celular", celular.to_json())
+    except Exception as e:
+        print('Error: ', e)
+        return response_reporte(400, "", {})
+
+
 def busca_por_id(id):
     return Celular.query.filter_by(id=id).first_or_404(
         description='Não houve ocorrências do id: {}'.format(id))
