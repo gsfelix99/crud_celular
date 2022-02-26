@@ -196,3 +196,7 @@ def deleta_celular(id):
  - Interação com uma página HTML
  - Adicionar novas tabelas
 
+## Créditos
+
+ - Referência ao video do canal [Programando Com Roger](https://www.youtube.com/watch?v=WDpPGFkI9UU).
+ - Código original, disponível em [crud-flask](https://github.com/vieiraroger/crud-flask)
