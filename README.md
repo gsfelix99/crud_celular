@@ -4,7 +4,7 @@ Esta é uma aplicação baseada na framewrk Python Flask. O objetivo desta aplic
 
 A tabela de celulares possui os seguintes campos:
   - id (Chave Primária);
-  - macar (Tipo String de tamanho 60);
+  - marca (Tipo String de tamanho 60);
   - modelo (Tipo String de tamanho 40);
   - nome (Tipo String de tamanho 20);
   - capacidade (Tipo String de tamanho 20);
