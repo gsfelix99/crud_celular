@@ -1,6 +1,6 @@
 # Uma simples aplicação *Flask* - **CRUD** Celular
 
-Esta é uma aplicação baseada na framewrk Python Flask. O objetivo desta aplicação é a execução do CRUD um uma tabela no Bancode Dados de um modelo de celular.
+Esta é uma aplicação baseada na framewrk Python Flask. O objetivo desta aplicação é a execução do CRUD um uma tabela no Banco de Dados de um modelo de celular.
 
 A tabela de celulares possui os seguintes campos:
   - id (Chave Primária);
